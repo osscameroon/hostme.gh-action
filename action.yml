@@ -1,0 +1,18 @@
+name: 'Hostme Deploy Action'
+description: 'Deployment action for Hostme.spaces'
+inputs:
+  h-project-name:
+    description: 'Your hostme.space project name on Hostme.Spaces'
+    required: true
+    default: 'oss-is-the-best'
+  h-api-token:
+    description: 'Your hostme.space API Token.'
+    required: true
+    default: 'not-real-token'
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hostme-action deploying ${{ inputs.h-project-name }}.
+      shell: bash
+    - run: ${{ github.action_path }}/deploy.sh ${{ inputs.h-project-name }} ${{ inputs.h-api-token }}
+      shell: bash
