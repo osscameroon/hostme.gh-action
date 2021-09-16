@@ -33,10 +33,7 @@ runs:
     - run: |
         echo [-] Deployment in progress...
         
-        ${{ github.action_path }}/deploy.sh \
-        ${{ inputs.project-zip }} \
-        ${{ inputs.hostme-project-name }} \
-        ${{ inputs.hostme-api-token }}
+        ${{ github.action_path }}/deploy.sh ${{ inputs.project-zip }} ${{ inputs.hostme-project-name }} '${{ inputs.hostme-api-token }}'
         
-        echo '[-] Deployed successfully !'
+        echo [-] Deployed successfully !
       shell: bash
