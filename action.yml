@@ -6,7 +6,7 @@ inputs:
     required: true
     default: 'oss-is-the-best.zip'
   hostme-project-name:
-    description: 'Your hostme project's name on Hostme.Spaces'
+    description: 'Your hostme project name on Hostme.Spaces'
     required: true
     default: 'oss-is-the-best'
   hostme-api-token:
