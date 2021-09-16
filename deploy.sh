@@ -32,7 +32,7 @@ deploy_me(){
     https://hostme.space/api/websites/$hostme_project_name/deploy_on_push)
 
     # if somethingwent wrong
-    if [ "$response_status_code" != "200" ]]; then
+    if [ "$response_status_code" != "200" ]; then
         # then exit
         exit 1
     fi
