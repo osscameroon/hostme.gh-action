@@ -23,7 +23,7 @@ deploy_me(){
 
     # We post/deploy the zip on hostme
     # and save the output in response.oss file + get the response status code
-    response_status_code=$(curl \
+    response_status_code=$(curl -s -o response.oss \
     -w "%{http_code}" \
     -v -X POST \
     -H "Accept: application/json" \
@@ -32,7 +32,7 @@ deploy_me(){
     https://hostme.space/api/websites/$hostme_project_name/deploy_on_push)
 
     # if somethingwent wrong
-    if [ $response_status_code != "200" ]; then
+    if [ "$response_status_code" != "200" ]]; then
         # then exit
         exit 1
     fi
