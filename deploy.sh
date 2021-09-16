@@ -35,8 +35,11 @@ deploy_me(){
     # if somethingwent wrong
     if [ $response_status_code != "200" ]; then
         echo "[x] An error occured !"
-        cat response.txt
+        cat response.oss
 
+        # We delete the response file after get its output
+        rm -rf response.oss
+        # then exit
         exit 1
     else
         # if everything went fine !
