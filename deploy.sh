@@ -21,7 +21,7 @@ deploy_me(){
     # We get the api token generated on your hostme.space dashboard
     api_token=$3
 
-    echo "[-] Deployment in progress..."
+    echo '[-] Deployment in progress...'
     # We post/deploy the zip on hostme
     # and save the output in response.oss file + get the response status code
     response_status_code=$(curl \
@@ -34,12 +34,12 @@ deploy_me(){
 
     # if somethingwent wrong
     if [ $response_status_code != "200" ]; then
-        echo "[x] An error occured, please check logs !"
+        echo '[x] An error occured, please check logs !'
         # then exit
         exit 1
     else
         # if everything went fine !
-        echo "[-] Deployed successfully !"
+        echo '[-] Deployed successfully !'
     fi
 }
 
