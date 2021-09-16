@@ -21,27 +21,13 @@ deploy_me(){
     # We get the api token generated on your hostme.space dashboard
     api_token=$3
 
-    echo "[-] Deployment in progress..."
     # We post/deploy the zip on hostme
-    # and save the output in response.oss file + get the response status code
-    response_status_code=$(curl -s -o response.oss \
-    -w "%{http_code}" \
+    curl -s \
     -v -X POST \
     -H "Accept: application/json" \
     -H "Authorization: Bearer $api_token" \
     -F "file=@$zip_file" \
-    https://hostme.space/api/websites/$hostme_project_name/deploy_on_push)
-
-    # if somethingwent wrong
-    if [ $response_status_code != "200" ]; then
-        echo "[x] An error occured !"
-        cat response.txt
-
-        exit 1
-    else
-        # if everything went fine !
-        echo "[-] Deployed successfully !"
-    fi
+    https://hostme.space/api/websites/$hostme_project_name/deploy_on_push
 }
 
 # Where $1 is the project zip file name

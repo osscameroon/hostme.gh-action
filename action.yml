@@ -1,4 +1,6 @@
 name: 'Hostme Deploy Action'
+icon: upload-cloud
+color: purple
 description: 'Deployment action for Hostme.spaces'
 inputs:
   project-zip:
@@ -6,7 +8,7 @@ inputs:
     required: true
     default: 'oss-is-the-best.zip'
   hostme-project-name:
-    description: 'Your hostme project's name on Hostme.Spaces'
+    description: 'Your hostme project name on Hostme.Spaces'
     required: true
     default: 'oss-is-the-best'
   hostme-api-token:
@@ -29,8 +31,9 @@ runs:
       shell: bash
     # We upload your zip project using deploy.sh
     - run: |
-        ${{ github.action_path }}/deploy.sh \
-        ${{ inputs.project-zip }} \
-        ${{ inputs.hostme-project-name }} \
-        ${{ inputs.hostme-api-token }}
+        echo [-] Deployment in progress...
+        
+        ${{ github.action_path }}/deploy.sh ${{ inputs.project-zip }} ${{ inputs.hostme-project-name }} '${{ inputs.hostme-api-token }}'
+        
+        echo [-] Deployed successfully !
       shell: bash

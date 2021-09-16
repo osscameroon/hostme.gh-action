@@ -16,7 +16,7 @@ What this ghaction do :
 
 # Integration example :
 
-- Example available here :
+- Example available [here](https://github.com/osscameroon/hostme.gh-action.example).
 
 - Screenshot :
 ![screenshot](https://github.com/osscameroon/hostme.gh-action.example/raw/master/screenshot.png)
