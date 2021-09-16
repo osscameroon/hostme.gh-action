@@ -1,4 +1,6 @@
 name: 'Hostme Deploy Action'
+icon: upload-cloud
+color: purple
 description: 'Deployment action for Hostme.spaces'
 inputs:
   project-zip:
