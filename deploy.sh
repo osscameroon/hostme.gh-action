@@ -23,7 +23,7 @@ deploy_me(){
 
     # We post/deploy the zip on hostme
     # and save the output in response.oss file + get the response status code
-    response_status_code=$(curl -s -o response.oss \
+    response_status_code=$(curl -s \
     -w "%{http_code}" \
     -v -X POST \
     -H "Accept: application/json" \
