@@ -22,7 +22,6 @@ deploy_me(){
     api_token=$3
 
     # We post/deploy the zip on hostme
-    # and save the output in response.oss file + get the response status code
     curl -s \
     -v -X POST \
     -H "Accept: application/json" \
