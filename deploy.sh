@@ -24,7 +24,7 @@ deploy_me(){
     echo "[-] Deployment in progress..."
     # We post/deploy the zip on hostme
     # and save the output in response.oss file + get the response status code
-    response_status_code=$(curl -s -o response.oss \
+    response_status_code=$(curl \
     -w "%{http_code}" \
     -v -X POST \
     -H "Accept: application/json" \
@@ -34,11 +34,7 @@ deploy_me(){
 
     # if somethingwent wrong
     if [ $response_status_code != "200" ]; then
-        echo "[x] An error occured !"
-        cat response.oss
-
-        # We delete the response file after get its output
-        rm -rf response.oss
+        echo "[x] An error occured, please check logs !"
         # then exit
         exit 1
     else
