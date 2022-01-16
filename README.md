@@ -25,16 +25,16 @@ What this ghaction do :
 
 Some explanations with comments:
 ```yaml
-			api-token: '${{ secrets.HOSTME_API_TOKEN }}'
-			# We just build the website (if needed) and provide
-			# the name of the hostme project inside a file
-			commands: |
-            	yarn build
-				# ... all other commands here
-				mv ./build ./hostme_project_name
-                
-                # this step is really important...
-                # otherwise, the github action will not deploy correctly
-				echo "hostme_project_name" > h_name.out
+api-token: '${{ secrets.HOSTME_API_TOKEN }}'
+# We just build the website (if needed) and provide
+# the name of the hostme project inside a file
+commands: |
+    yarn build
+    # ... all other commands here
+    mv ./build ./hostme_project_name
+    
+    # this step is really important...
+    # otherwise, the github action will not deploy correctly
+    echo "hostme_project_name" > h_name.out
 ```
 
