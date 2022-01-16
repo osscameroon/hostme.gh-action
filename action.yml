@@ -28,10 +28,12 @@ runs:
         # We get the name from your commands executed
         name=$(cat h_name.out)
         target=$(cat h_target.out)
-        echo "[+] folder-to-zip : $name"
+
+        echo "[+] folder-to-zip  : $target"
+        echo "[+] hostme-project : $name"
 
         echo "[-] Zipping process..."
-        zip -r '$name.zip' $target -x '*.git*'
+        zip -r '$name.zip' '$target' -x '*.git*'
 
         # We upload your zip project using deploy.sh
         echo "[-] Deployment in progress..."
