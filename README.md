@@ -25,16 +25,10 @@ What this ghaction do :
 
 Some explanations with comments:
 ```yaml
-api-token: '${{ secrets.HOSTME_API_TOKEN }}'
-# We just build the website (if needed) and provide
-# the name of the hostme project inside a file
-commands: |
-    yarn build
-    # ... all other commands here
-    mv ./build ./hostme_project_name
-    
-    # this step is really important...
-    # otherwise, the github action will not deploy correctly
-    echo "hostme_project_name" > h_name.out
+# Two important parameters are required here
+# the h_name.out that will contain the hostme project name
+# the h_target.out that will contain the folder zip that will be zip
+echo "hostme_project_name" > h_name.out
+echo "build" > h_target.out
 ```
 
