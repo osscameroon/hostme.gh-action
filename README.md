@@ -20,7 +20,7 @@ What this ghaction do :
 - Example available [here](https://github.com/osscameroon/hostme.gh-action.example).
 
 - Screenshot :
-![screenshot](https://github.com/osscameroon/hostme.gh-action.example/raw/master/screenshot.png)
+![screenshot](./screen.png)
 
 
 Some explanations with comments:
