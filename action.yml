@@ -3,15 +3,7 @@ icon: upload-cloud
 color: purple
 description: 'Deployment action for Hostme.spaces'
 inputs:
-  project-zip:
-    description: 'Your hostme.space zip project to upload on Hostme.Spaces'
-    required: true
-    default: 'oss-is-the-best.zip'
-  hostme-project-name:
-    description: 'Your hostme project name on Hostme.Spaces'
-    required: true
-    default: 'oss-is-the-best'
-  hostme-api-token:
+  api-token:
     description: 'Your hostme.space API Token.'
     required: true
     default: 'not-real-token'
@@ -19,21 +11,33 @@ inputs:
     description: 'Commands you want to execute before the upload on hostme.Space'
     required: false
     default: |
-      echo Hostme-action deploying process...
-      echo example of command 2
+      echo "Hostme-action deploying process..."
+      echo "example of command 2"
+      # always put the folder name inside a h_name.out
+      # it should be the project name on hostme
+      echo "hostme_project_name" > h_name.out
 runs:
   using: "composite"
   steps:
     # We run all inputs commands you provided here
     # before uploading the zip on hostme.space
     - run: |
+        echo "[-] Executing your commands..."
         ${{ inputs.commands }}
-      shell: bash
-    # We upload your zip project using deploy.sh
-    - run: |
-        echo [-] Deployment in progress...
+
+        # We get the name from your commands executed
+        name=$(cat h_name.out)
+        echo "[+] folder-to-zip : $name"
+
+        echo "[-] Zipping process..."
+        zip -r '$name.zip' $name -x '*.git*'
+
+        # We upload your zip project using deploy.sh
+        echo "[-] Deployment in progress..."
+        ${{ github.action_path }}/deploy.sh $name '${{ inputs.api-token }}'
         
-        ${{ github.action_path }}/deploy.sh ${{ inputs.project-zip }} ${{ inputs.hostme-project-name }} '${{ inputs.hostme-api-token }}'
-        
-        echo [-] Deployed successfully !
+        echo "[-] Cleaning the zip file..."
+        rm -rf '$name.zip'
+
+        echo "[-] Deployed successfully !"
       shell: bash
