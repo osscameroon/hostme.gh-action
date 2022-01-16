@@ -27,7 +27,7 @@ Some explanations with comments:
 ```yaml
 # Two important parameters are required here
 # the h_name.out that will contain the hostme project name
-# the h_target.out that will contain the folder zip that will be zip
+# the h_target.out that will contain the folder name that will be zip
 echo "hostme_project_name" > h_name.out
 echo "build" > h_target.out
 ```
